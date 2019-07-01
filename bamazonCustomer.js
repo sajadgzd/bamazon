@@ -28,7 +28,7 @@ function continueShop() {
         choices: ["YES", "NO"]
     }]).then(function(response) {
         if (response.repeat === "NO") {
-            console.log("Thank you for shopping with Lawrence Fashion.Inc! See you next time.")
+            console.log("Thank you for shopping with Bamazon! See you next time.")
             connection.end()
         } else {
             purchase()
@@ -39,7 +39,7 @@ function continueShop() {
 function purchase() {
     connection.query("SELECT * FROM products", function(err, res) {
         if (err) throw err;
-        console.log(res);
+        // console.log(res);
         values = [];
         for (var i = 0; i < res.length; i++) {
             values.push([res[i].item_id, res[i].product_name, res[i].department_name, "$" + res[i].price])
@@ -73,6 +73,7 @@ function purchase() {
         ]).then(function(response) {
             connection.query("SELECT * FROM products WHERE item_id=?", [response.product], function(err, res) {
                 if (err) throw err;
+                console.log(res);
                 if (response.quantity > res[0].stock_quantity) {
                     console.log("Sorry! We only have " + res[0].stock_quantity + " available for sale. Please reenter the quantity.")
                     purchase();
@@ -83,19 +84,7 @@ function purchase() {
                     var newQuantity = res[0].stock_quantity - response.quantity;
                     connection.query(
                         "UPDATE products SET ? WHERE ?", [{
-                                stock_quantity: newQuantity
-                            },
-                            {
-                                item_id: response.product
-                            }
-                        ],
-                        function(err, res) {
-                            if (err) throw err;
-                            console.log(res.affectedRows + " inventory updates")
-                        }
-                    );
-                    connection.query(
-                        "UPDATE products SET ? WHERE ?", [{
+                                stock_quantity: newQuantity,
                                 product_sales: newSales
                             },
                             {
@@ -104,8 +93,8 @@ function purchase() {
                         ],
                         function(err, res) {
                             if (err) throw err;
-                            console.log("Thank you for your purchase!")
-                            continueShop()
+                            console.log(res.affectedRows + " inventory updates");
+                            continueShop();
                         }
                     );
                 };
