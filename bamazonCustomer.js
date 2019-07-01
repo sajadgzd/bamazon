@@ -1,10 +1,8 @@
 var inquirer = require('inquirer');
 var mysql = require('mysql');
 var table = require('console.table');
-var values = [];
 require("dotenv").config();
-
-
+var values = [];
 
 var connection = mysql.createConnection({
     host: "localhost",
