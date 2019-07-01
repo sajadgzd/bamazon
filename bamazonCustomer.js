@@ -49,7 +49,7 @@ function purchase() {
         inquirer.prompt([{
                 type: "input",
                 name: "product",
-                message: "What would you like to buy (enter Item ID)?",
+                message: "What would you like to buy (Please enter Item ID)?",
                 validate: function(value) {
                     if (!isNaN(value)) {
                         return true
@@ -75,7 +75,7 @@ function purchase() {
                 if (err) throw err;
                 // console.log(res);
                 if (response.quantity > res[0].stock_quantity) {
-                    console.log("Sorry! We only have " + res[0].stock_quantity + " available for sale. Please reenter the quantity.")
+                    console.log("Sorry! We only have " + res[0].stock_quantity + " available for sale. Please re-Enter the quantity.")
                     purchase();
                 } else {
                     var sales = res[0].price * response.quantity;
@@ -93,7 +93,7 @@ function purchase() {
                         ],
                         function(err, res) {
                             if (err) throw err;
-                            console.log(res.affectedRows + " inventory updates");
+                            console.log(res.affectedRows + " inventory updated");
                             continueShop();
                         }
                     );
