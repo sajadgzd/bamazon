@@ -3,7 +3,7 @@ var mysql = require('mysql');
 var table = require('console.table');
 var values = [];
 require("dotenv").config();
-// console.log(process.env.HOST_KEY);
+
 
 
 var connection = mysql.createConnection({
@@ -73,7 +73,7 @@ function purchase() {
         ]).then(function(response) {
             connection.query("SELECT * FROM products WHERE item_id=?", [response.product], function(err, res) {
                 if (err) throw err;
-                console.log(res);
+                // console.log(res);
                 if (response.quantity > res[0].stock_quantity) {
                     console.log("Sorry! We only have " + res[0].stock_quantity + " available for sale. Please reenter the quantity.")
                     purchase();
