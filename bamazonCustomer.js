@@ -24,14 +24,14 @@ function continueShop() {
     inquirer.prompt([{
         type: "list",
         name: "repeat",
-        message: "Will you like to continue shopping?",
+        message: "Would you like to continue shopping?",
         choices: ["YES", "NO"]
     }]).then(function(response) {
         if (response.repeat === "NO") {
             console.log("Thank you for shopping with Bamazon! See you next time.")
-            connection.end()
+            connection.end();
         } else {
-            purchase()
+            purchase();
         }
     });
 };
@@ -49,7 +49,7 @@ function purchase() {
         inquirer.prompt([{
                 type: "input",
                 name: "product",
-                message: "What will you like to buy (enter Item ID)?",
+                message: "What would you like to buy (enter Item ID)?",
                 validate: function(value) {
                     if (!isNaN(value)) {
                         return true
@@ -61,7 +61,7 @@ function purchase() {
             {
                 type: "input",
                 name: "quantity",
-                message: "How many will you like to buy?",
+                message: "How many would you like to buy?",
                 validate: function(value) {
                     if (!isNaN(value)) {
                         return true
