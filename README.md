@@ -71,7 +71,7 @@ The dependencies should now be in the local `node_modules` folder.
  connection.end()
 ```
 
-![Demo for Customer View]()
+![Demo for Customer View]("assets/customer.gif")
 
 
 <a name="manager"></a>
