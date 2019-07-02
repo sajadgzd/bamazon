@@ -1,6 +1,5 @@
 
-## BAMAZON
-----------
+# BAMAZON
 
 ## Table of Contents 
 1. [Overview](#overview)
