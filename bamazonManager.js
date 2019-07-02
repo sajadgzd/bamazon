@@ -157,7 +157,7 @@ function addProduct() {
                 message: "Which department does this product belong to?",
                 choices: departmentArr,
                 validate: function(value) {
-                    if (isNaN(value) === false) {
+                    if (!isNaN(value)) {
                         return true
                     } else {
                         return false
@@ -169,7 +169,7 @@ function addProduct() {
                 name: "productQuantity",
                 message: "How many of this product are we starting off with?",
                 validate: function(value) {
-                    if (isNaN(value) === false) {
+                    if (!isNaN(value)) {
                         return true
                     } else {
                         return false
@@ -181,7 +181,7 @@ function addProduct() {
                 name: "productPrice",
                 message: "What is the price of this product?",
                 validate: function(value) {
-                    if (isNaN(value) === false) {
+                    if (!isNaN(value)) {
                         return true
                     } else {
                         return false
@@ -189,10 +189,15 @@ function addProduct() {
                 }
             }
         ]).then(function(response) {
-            connection.query('INSERT INTO products SET ?', { product_name: response.productName, department_name: response.departmentName, price: response.productPrice, stock_quantity: response.productQuantity }, function(error, results, fields) {
+            connection.query('INSERT INTO products SET ?', {
+                product_name: response.productName,
+                department_name: response.departmentName,
+                price: response.productPrice,
+                stock_quantity: response.productQuantity
+            }, function(error, results) {
                 if (error) throw error;
                 console.log(response.productName + " has been added to " + response.departmentName + " department with item_id of " + results.insertId)
-                continueManage()
+                continueManage();
             });
         });
     });

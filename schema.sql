@@ -29,3 +29,15 @@ ALTER TABLE products
   ADD product_sales INTEGER NOT NULL DEFAULT 0;
 
 SELECT * FROM products;
+
+CREATE TABLE departments (
+	department_id INTEGER AUTO_INCREMENT NOT NULL, 
+    department_name VARCHAR(100) NOT NULL, 
+    over_head_costs DECIMAL(11, 2) NOT NULL DEFAULT 0,
+    PRIMARY KEY (department_id)
+); 
+
+INSERT INTO departments(department_name, over_head_costs)
+VALUES("Watch", 20000), ("Tops", 10000), ("Bottoms", 10000), ("Other", 5000);
+
+SELECT * FROM departments;
