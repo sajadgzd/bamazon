@@ -79,7 +79,7 @@ function purchase() {
                     var sales = res[0].price * response.quantity;
                     console.log("Your total is: $" + sales);
                     var newSales = res[0].product_sales + sales;
-                    var newQuantity = res[0].stock_quantity - response.quantity;
+                    var newQuantity = res[0].stock_quantity - parseInt(response.quantity);
                     connection.query(
                         "UPDATE products SET ? WHERE ?", [{
                                 stock_quantity: newQuantity,

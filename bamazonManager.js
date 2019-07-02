@@ -95,12 +95,12 @@ function addInventory() {
         inquirer.prompt([{
                 type: "input",
                 name: "addProduct",
-                message: "Which product Would you like to add to (enter Item ID)?",
+                message: "Which product Would you like to add (Please enter Item ID)?",
                 validate: function(value) {
-                    if (isNaN(value) === false) {
-                        return true
+                    if (!isNaN(value)) {
+                        return true;
                     } else {
-                        return false
+                        return false;
                     }
                 }
             },
@@ -109,10 +109,10 @@ function addInventory() {
                 name: "quantityIncrease",
                 message: "How many Would you like to add?",
                 validate: function(value) {
-                    if (isNaN(value) === false) {
-                        return true
+                    if (!isNaN(value)) {
+                        return true;
                     } else {
-                        return false
+                        return false;
                     }
                 }
             }
@@ -132,7 +132,7 @@ function addInventory() {
                     function(err, res) {
                         if (err) throw err;
                         console.log(response.quantityIncrease + " units has been added to " + currentProuct);
-                        continueManage()
+                        continueManage();
                     });
             });
         });
