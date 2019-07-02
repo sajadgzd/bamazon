@@ -98,7 +98,7 @@ connection.connect(function(err) {
  7. Add New Products will prompt the user to select a department. Note that this a `rawlist` so option selection must be done through the number keys.
  8. After each `manage`, you can choose to continue or exit by using the up and down arrow keys on your keyboard (exit early with `ctrl + c`)
  9. If you select no, connection to your MySQL ends
-![Demo for Manager View]()
+![Demo for Manager View](/assets/manager.gif)
 
 
 <a name="supervisor"></a>
